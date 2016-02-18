@@ -1,3 +1,5 @@
+package com.book.genre;
+
 import java.util.*;
 
 /**
@@ -38,7 +40,7 @@ public class ScoreCalculator {
 
     public ScoreCalculator(BookReader bookReader, GenresReader genresReader) {
         this.invertedIndex = bookReader.invertedIndex;
-        this.genreTable = genresReader.generTable;
+        this.genreTable = genresReader.genreTable;
         titleList = bookReader.titles;
     }
 

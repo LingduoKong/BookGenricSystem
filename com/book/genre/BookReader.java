@@ -1,7 +1,12 @@
-import JSON.*;
+package com.book.genre;
+
+import JSON.JSONArray;
+import JSON.JSONObject;
 import STEMMER.SnowballStemmer;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,15 +17,27 @@ import java.util.HashMap;
 
 public class BookReader {
 
+    public static void main(String[] args) {
+
+        BookReader bookReader = new BookReader();
+    }
+
     HashMap<String, Word> invertedIndex;
     ArrayList<String> titles;
 
+    /**
+     * initialize a book reader which get books' information and store them to an inverted index table.
+     */
     public BookReader() {
         invertedIndex = new HashMap<>();
         titles = new ArrayList<>();
     }
 
-    // read in json book list from a file and parse the json object
+    /**
+     * read in a JSON file for book information and store them into an inverted index table.
+     * @param filePath is the OS path of a file, which contains book info stored in JSON format.
+     * @throws Exception are FileNotExisted exception and other exceptions about JSON readIn procedure.
+     */
     public void readInBooks(String filePath) throws Exception {
         File file = new File(filePath);
         BufferedReader in = new BufferedReader(new FileReader(file));
@@ -47,7 +64,7 @@ public class BookReader {
     }
 
     // get the content of a book and insert them into the table
-    public void processBook(String title, String description) throws Exception {
+    private void processBook(String title, String description) throws Exception {
 
         if (title == null) {
             throw new Exception("Illegal title with no content!");
@@ -59,7 +76,7 @@ public class BookReader {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        /**
+        /*
          * initialize a stemmer
          */
         Class stemClass = Class.forName("STEMMER.englishStemmer");
@@ -82,7 +99,7 @@ public class BookReader {
                 String word = stringBuilder.toString().toLowerCase();
                 stringBuilder = new StringBuilder();
 
-                /**
+                /*
                  * add a stemmer for word precessing
                  */
                 stemmer.setCurrent(word);
@@ -100,7 +117,12 @@ public class BookReader {
         }
     }
 
-    // for debug and later storage
+    /**
+     * Convert the inverted Index table to string for two reasons.
+     * First: debug
+     * Second: store to a file and reload next time without recalculating books.
+     * @return a string in JSON format of current inverted index table
+     */
     public String toString() {
 
         HashMap<String, JSONObject> tempMap = new HashMap<>();

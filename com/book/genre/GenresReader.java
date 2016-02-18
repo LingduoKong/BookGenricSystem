@@ -1,3 +1,5 @@
+package com.book.genre;
+
 import STEMMER.SnowballStemmer;
 
 import java.io.BufferedReader;
@@ -11,13 +13,22 @@ import java.util.HashMap;
 
 public class GenresReader {
 
-    HashMap<String, Genre> generTable;
+    HashMap<String, Genre> genreTable;
 
+    /**
+     * create a genre reader instance without any arguments
+     * Initialize a table which maps a genre with keywords and factors
+     */
     public GenresReader(){
-        generTable = new HashMap<>();
+        genreTable = new HashMap<>();
     }
 
-    // separate the read in method so that it can read as many csv file as we want
+    /**
+     * read in a CSV file with genre keywords and factors
+     * parse them and store to the genre table
+     * @param filePath is the path of CSV file
+     * @throws Exception throw ClassNotFound and FileNotExisted exceptions
+     */
     public void readInCSV(String filePath) throws Exception{
         File file = new File(filePath);
         BufferedReader in = new BufferedReader(new FileReader(file));
@@ -67,24 +78,27 @@ public class GenresReader {
 
             int value = Integer.parseInt(strs[2].trim());
 
-            if (! generTable.containsKey(strs[0])) {
-                generTable.put(genre_name, new Genre(genre_name));
+            if (! genreTable.containsKey(strs[0])) {
+                genreTable.put(genre_name, new Genre(genre_name));
             }
-            generTable.get(genre_name).key_value.put(keyword, value);
+            genreTable.get(genre_name).key_value.put(keyword, value);
         }
     }
 
     // whether a string represents a number
-    public boolean isNumeric(String s) {
+    private boolean isNumeric(String s) {
         return s.matches("[-+]?\\d*\\.?\\d+");
     }
 
-    // for display and debug
+    /**
+     * convert current genre table to a string for testing and viewing
+     * @return the string representing whole table
+     */
     public String toString() {
 
         StringBuilder stringBuilder = new StringBuilder();
-        for (String key : generTable.keySet()) {
-            stringBuilder.append(key + " " + generTable.get(key).toString() + "\n");
+        for (String key : genreTable.keySet()) {
+            stringBuilder.append(key + " " + genreTable.get(key).toString() + "\n");
         }
         return stringBuilder.toString();
     }
