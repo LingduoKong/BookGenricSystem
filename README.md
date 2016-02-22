@@ -1,4 +1,4 @@
-* How to run it:
+** How to run it:
 - 0, 	It is compiled and tesded by JDK 1.8
 - 1, 	come into Bookhub folder
 - 2, 	java ScoreCalculator <book JSON file path> <genre CSV file path>
