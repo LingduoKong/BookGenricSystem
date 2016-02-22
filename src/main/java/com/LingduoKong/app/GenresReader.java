@@ -1,6 +1,6 @@
 package com.LingduoKong.app;
 
-import STEMMER.SnowballStemmer;
+import org.tartarus.snowball.SnowballStemmer;
 
 import java.io.BufferedReader;
 import java.io.File;
