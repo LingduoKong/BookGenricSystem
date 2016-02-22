@@ -1,7 +1,8 @@
 # How to run it:
 - 0, 	It is compiled and tesded by JDK 1.8
 - 1, 	come into Bookhub folder
-- 2, 	java ScoreCalculator <book JSON file path> <genre CSV file path>
+- 2,    $ mvn clean compile assembly:single
+- 3,    $ java -cp target/*****-with-dependencies.jar com.LingduoKong.app.Main
 
 Timer:
 It costs me half hour to think about different solitions and corner cases.
