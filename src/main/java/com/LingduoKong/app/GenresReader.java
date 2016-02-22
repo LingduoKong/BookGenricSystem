@@ -1,6 +1,7 @@
 package com.LingduoKong.app;
 
 import org.tartarus.snowball.SnowballStemmer;
+import org.tartarus.snowball.ext.englishStemmer;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -33,13 +34,9 @@ public class GenresReader {
         File file = new File(filePath);
         BufferedReader in = new BufferedReader(new FileReader(file));
 
-        /**
-         * initialize a stemmer
-         */
-        Class stemClass = Class.forName("STEMMER.englishStemmer");
-        SnowballStemmer stemmer = (SnowballStemmer) stemClass.newInstance();
+        englishStemmer stemmer = new englishStemmer();
 
-        String line = in.readLine();
+        String line = null;
 
         while ((line = in.readLine()) != null) {
 

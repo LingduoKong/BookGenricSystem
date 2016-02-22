@@ -3,6 +3,7 @@ package com.LingduoKong.app;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.tartarus.snowball.SnowballStemmer;
+import org.tartarus.snowball.ext.englishStemmer;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -71,11 +72,7 @@ public class BookReader {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        /*
-         * initialize a stemmer
-         */
-        Class stemClass = Class.forName("STEMMER.englishStemmer");
-        SnowballStemmer stemmer = (SnowballStemmer) stemClass.newInstance();
+        englishStemmer stemmer = new englishStemmer();
 
         int counter = 0;
         for (int i = 0; i < description.length(); i++) {
