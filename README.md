@@ -1,8 +1,7 @@
-How to run it:
-0, 	It is compiled and tesded by JDK 1.8
-1, 	come into Bookhub folder 
-2,	javac JSON/*.java STEMMER/*.java *.java
-3, 	java ScoreCalculator <book JSON file path> <genre CSV file path>
+* How to run it:
+- 0, 	It is compiled and tesded by JDK 1.8
+- 1, 	come into Bookhub folder
+- 2, 	java ScoreCalculator <book JSON file path> <genre CSV file path>
 
 Timer:
 It costs me half hour to think about different solitions and corner cases.
