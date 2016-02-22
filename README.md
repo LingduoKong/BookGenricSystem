@@ -10,13 +10,13 @@ About three hours in total to write codes.
 Another half hour to write readme file and some comments.  
 In total: 4.5h
 
-Task list:
+## Task list:
 1,	read in a file with list of books
 2,	read in a CSV file with genre/key/value
 3,	find keys in a description and calculate their occurrence. 
 4,	calculate the score of each genre
 
-Solutions:
+## Solutions:
 1, 	use regular expression to match each key word. 
 	(Straight forward but slow)
 2, 	when reading in the book list, use inverted index to catch the position of each word, 
@@ -27,18 +27,14 @@ Solutions:
 	If we find it, it will be added to calculate the final scores.
 	(Cost less space than 2nd solution and faster than 1st solution)
 
-Corner case:
+## Corner case:
 1, 	the key might be the combination of several words.
 2, 	we need stemming before processing and matching.
 
-Final:
+## Final:
 I choose 2nd soluction because the inverted index costs no more than 10M for 10k books, which is acceptable. (I assume that average length of a word is 10)
 The index can be stored at JSON file and reloaded next time instead of recalculating.
 With the increaing of books, it should be better to maintain because it is more frequent for genre to change.
 A book's description should not be changed frequently.
-So we calculate genre map each time while loading inverted index of books.
 
-Mark:
-JSON package and STEMMER packege are open sources libs.
-I use them to parse json and stem words.
 
